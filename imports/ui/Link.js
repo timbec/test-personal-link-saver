@@ -6,25 +6,13 @@ import Links from "../api/links";
 import LinksList from "./LinksList";
 import PrivateHeader from "./PrivateHeader";
 import AddLink from "./AddLink";
-
-// class Link extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <PrivateHeader title="Your Links From the Links" />
-//         <LinksList />
-//         <AddLink />
-//       </div>
-//     );
-//   }
-// }
-
-//export default Link;
+import LinksListFilter from "./LinksListFilter";
 
 export default () => {
   return (
     <div>
-      <PrivateHeader />
+      <PrivateHeader title="Your Links" />
+      <LinksListFilter />
       <LinksList />
       <AddLink />
     </div>
