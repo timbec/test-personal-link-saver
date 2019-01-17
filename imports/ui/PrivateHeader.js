@@ -1,17 +1,23 @@
 import React from "react";
 import { Accounts } from "meteor/accounts-base";
+import PropTypes from "prop-types";
 
 const PrivateHeader = props => {
   return (
-    <div>
-      <h1>{props.title}</h1>
-      <button onClick={() => Accounts.logout()}>Logout</button>
-    </div>
+    <header className="header">
+      <div className="header__content">
+        <h1 className="header__title">{props.title}</h1>
+        <button className="button--link-text" onClick={() => Accounts.logout()}>
+          Logout
+        </button>
+      </div>
+    </header>
   );
 };
 
+//must now import PropTypes
 PrivateHeader.propTypes = {
-  //title: React.PropTypes.string.isRequired
+  title: PropTypes.string.isRequired
 };
 
 export default PrivateHeader;

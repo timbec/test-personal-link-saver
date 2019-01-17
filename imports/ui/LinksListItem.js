@@ -3,12 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Clipboard from "clipboard";
 
-// Create a boolean state called justCopied. Default to false.
-//on success switch justCopied to true.
-//wait a second. Switch justCopied to false.
-
-//Dynamically render the button text. true => Copied, false => Copy.
-
 class LinksListItem extends React.Component {
   constructor(props) {
     super(props);
@@ -35,14 +29,26 @@ class LinksListItem extends React.Component {
   }
   render() {
     return (
-      <div>
-        <p>{this.props.url}</p>
-        <p>{this.props.shortUrl}</p>
-        <p>{this.props.visible.toString()}</p>
-        <button ref="copy" data-clipboard-text={this.props.shortUrl}>
+      <div className="item">
+        <p className="item__main-url">{this.props.url}</p>
+        <p className="item__message">{this.props.shortUrl}</p>
+
+        <a
+          className="button button--pill button--link"
+          href={this.props.shortUrl}
+          target="_blank"
+        >
+          Visit
+        </a>
+        <button
+          className="button button--pill"
+          ref="copy"
+          data-clipboard-text={this.props.shortUrl}
+        >
           {this.state.justCopied ? "Copied" : "Copy"}
         </button>
         <button
+          className="button button--pill"
           onClick={() => {
             Meteor.call(
               "links.setVisibility",
